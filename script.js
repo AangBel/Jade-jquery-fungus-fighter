@@ -133,12 +133,15 @@ if (healthPoints >= arcaneDamage && attackPoints >= arcaneUse) {
 } else {
     if (healthPoints < arcaneDamage) {
     healthPoints = 0;
+    $(".freaky-fungus").removeClass("walk").addClass("dead");
     }
     if (attackPoints < arcaneUse) {
     attackPoints = 0;
     $(".attack-btn").prop("disabled", attackPoints === 0);
+    $(".freaky-fungus").removeClass("walk").addClass("jump");
+
     }
-    $(".freaky-fungus").removeClass("walk").addClass("dead");
+    
 }
 
 $(".hp-text").text(healthPoints + "HP");
@@ -165,6 +168,7 @@ if (healthPoints >= entangleDamage && attackPoints >= entangleUse) {
     if (attackPoints < entangleUse) {
     attackPoints = 0;
     $(".attack-btn").prop("disabled", attackPoints === 0);
+    $(".freaky-fungus").removeClass("walk").addClass("jump");
     }
 }
 
@@ -201,6 +205,7 @@ if (healthPoints >= dragonDamage && attackPoints >= dragonBladeUse) {
     if (attackPoints < dragonBladeUse) {
     attackPoints = 0;
     $(".attack-btn").prop("disabled", attackPoints === 0);
+    $(".freaky-fungus").removeClass("walk").addClass("jump");
     }
 }
 
@@ -237,6 +242,7 @@ if (healthPoints >= starDamage && attackPoints >= starFireUse) {
     if (attackPoints < starFireUse) {
     attackPoints = 0;
     $(".attack-btn").prop("disabled", attackPoints === 0);
+    $(".freaky-fungus").removeClass("walk").addClass("jump");
     }
 }
 
