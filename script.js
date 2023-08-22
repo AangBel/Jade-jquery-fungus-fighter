@@ -12,8 +12,7 @@ $(document).ready(onReady);
 // - Updates state which is ->
 // - Rendered to the DOM
 
-let healthPoints = 100;
-let attackPoints = 100;
+
 
 
 // if (healthPoints < 0){
@@ -30,16 +29,17 @@ let attackPoints = 100;
 
 
 
-function fungus(){
-if (healthPoints < 1){
-    healthPoints = 0;
-} $(".hp-text").text( 0 + "HP")
-$('.freaky-fungus walk').addClass('.freaky-fungus.dead');
+// function fungus(){
+// if (healthPoints < 1){
+//     healthPoints = 0;
+// } $(".hp-text").text( 0 + "HP")
+// $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
 
-};
-fungus();
+// };
+// fungus();
 
-
+let healthPoints = 100;
+let attackPoints = 100;
 
 function onReady() {
 console.log("in on ready!");
@@ -55,34 +55,44 @@ function arcaneScepter() {
 console.log("user used ARCANE SCEPTER!");
 
 
-// let arcaneDamage = (healthPoints -= 14);
-let arcaneDamage = 14;
+let arcaneDamage = (healthPoints -= 14);
+// let arcaneDamage = 14;
 
 // let attempt = healthPoints -= arcaneDamage;
 
-if (healthPoints >= arcaneDamage){
-    healthPoints -= arcaneDamage
-} else {
-    healthPoints = 0;
-}
+// if (healthPoints >= arcaneDamage){
+//     healthPoints -= arcaneDamage
+//     console.log('this is the health points', healthPoints)
+//     $(".hp-text").text(healthPoints + "HP");
+// }else if (healthPoints === 0){
+//     // healthPoints = 0;
+//     $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
+// }
 console.log(arcaneDamage);
 
 $(".hp-text").text(arcaneDamage + "HP");
+
 $("#hp-meter").attr("value", arcaneDamage);
 
-let arcaneUse = 12;
+// let arcaneUse = 12;
 
-// let arcaneUse = (attackPoints -= 12);
+let arcaneUse = (attackPoints -= 12);
 
-if (attackPoints >= arcaneUse){
-    attackPoints -= arcaneUse
-} else {
-    attackPoints = 0;
-}
+// if (attackPoints > arcaneUse){
+//     attackPoints -= arcaneUse
+// } else {
+//     attackPoints = 0;
+// }
 console.log(arcaneUse);
 $(".ap-text").text(arcaneUse + "AP");
 $("#ap-meter").attr("value", arcaneDamage);
-// energy();
+// // energy();
+
+// if (healthPoints <= 0){
+//     $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
+// };
+
+
 
 } //end of arcaneScepter
 // -------------------------------------------------------
