@@ -12,22 +12,16 @@ $(document).ready(onReady);
 // - Updates state which is ->
 // - Rendered to the DOM
 
-
-
-
 // if (healthPoints < 0){
 //     healthPoints = 0;
 // } if (attackPoints < 0){
 //     attackPoints = 0;
 // }
 
-
 // health();
 // if (healthPoints <= 0){
 //     healthPoints = 0;
 // } $(".hp-text").text(arcaneDamage+ 0 + "HP")
-
-
 
 // function fungus(){
 // if (healthPoints < 1){
@@ -51,14 +45,11 @@ $("#starFireBtn").on("click", starFireBtn);
 } //end of onReady
 // -------------------------------------------------------
 
-function arcaneScepter() {
-console.log("user used ARCANE SCEPTER!");
-
-
-let arcaneDamage = (healthPoints -= 14);
 // let arcaneDamage = 14;
 
 // let attempt = healthPoints -= arcaneDamage;
+
+// let runAttack = healthPoints -= arcaneDamage;
 
 // if (healthPoints >= arcaneDamage){
 //     healthPoints -= arcaneDamage
@@ -68,172 +59,198 @@ let arcaneDamage = (healthPoints -= 14);
 //     // healthPoints = 0;
 //     $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
 // }
-console.log(arcaneDamage);
 
-$(".hp-text").text(arcaneDamage + "HP");
+//let mushHealth = healthPoints
+// if healthpoints are more than or equal to arcaneDamage{then } run attack (healthpoints -= arcaneDamage) if (healthpoints <= 0){
+// $('.freaky-fungus walk').removeClass('.freaky-fungus.dead');
+//('.freaky-fungus.dead');
+//}
+//}
 
-$("#hp-meter").attr("value", arcaneDamage);
+// if (healthPoints >= arcaneDamage){
+//   runAttack;
+//     console.log('this is the health points', healthPoints)
+//     $(".hp-text").text(healthPoints + "HP");
+// }else if (healthPoints === 0){
+//     // healthPoints = 0;
+//     $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
+// $('.freaky-fungus').removeClass('walk').addClass('dead');
+// // }
+
+// function arcaneScepter() {
+//     console.log("user used ARCANE SCEPTER!");
+//     let healthPoints= 100;
+//     let arcaneDamage = 14;
+
+// if (healthPoints => arcaneDamage){
+//     healthPoints -= arcaneDamage;
+// } else if (healthPoints === 0){
+//     $('.freaky-fungus').removeClass('walk').addClass('dead');
+// };
+
+// $(".hp-text").text(healthPoints + "HP");
+// $("#hp-meter").attr("value", healthPoints);
+
+// $(".ap-text").text(attackPoints + "AP");
+// $("#ap-meter").attr("value", attackPoints);
+
+// $(".hp-text").text(arcaneDamage + "HP");
+// $("#hp-meter").attr("value", arcaneDamage);
+
+// $(".ap-text").text(arcaneUse + "AP");
+// $("#ap-meter").attr("value", arcaneDamage);
+//     let arcaneDamage = (healthPoints -= 14);
+
+// console.log(arcaneDamage);
 
 // let arcaneUse = 12;
 
-let arcaneUse = (attackPoints -= 12);
+// let arcaneUse = (attackPoints -= 12);
 
 // if (attackPoints > arcaneUse){
 //     attackPoints -= arcaneUse
 // } else {
 //     attackPoints = 0;
 // }
-console.log(arcaneUse);
-$(".ap-text").text(arcaneUse + "AP");
-$("#ap-meter").attr("value", arcaneDamage);
-// // energy();
+// console.log(arcaneUse);
+// $(".ap-text").text(arcaneUse + "AP");
+// $("#ap-meter").attr("value", arcaneDamage);
+// // // energy();
 
-// if (healthPoints <= 0){
-//     $('.freaky-fungus walk').addClass('.freaky-fungus.dead');
+// if (healthPoints === 0){
+//     $('.freaky-fungus walk').removeClass('.freaky-fungus.dead');
 // };
 
+function arcaneScepter() {
+console.log("user used ARCANE SCEPTER!");
 
+const arcaneDamage = 14;
+const arcaneUse = 12;
 
+if (healthPoints >= arcaneDamage && attackPoints >= arcaneUse) {
+    healthPoints -= arcaneDamage;
+    attackPoints -= arcaneUse;
+} else {
+    if (healthPoints < arcaneDamage) {
+    healthPoints = 0;
+    }
+    if (attackPoints < arcaneUse) {
+    attackPoints = 0;
+    $(".attack-btn").prop("disabled", attackPoints === 0);
+    }
+    $(".freaky-fungus").removeClass("walk").addClass("dead");
+}
+
+$(".hp-text").text(healthPoints + "HP");
+$("#hp-meter").attr("value", healthPoints);
+
+$(".ap-text").text(attackPoints + "AP");
+$("#ap-meter").attr("value", attackPoints);
 } //end of arcaneScepter
 // -------------------------------------------------------
 function entangleBtn() {
 console.log("user used ENTANGLE!");
 
-let entangleDamage = (healthPoints -= 9);
-$(".hp-text").text(entangleDamage + "HP");
-$("#hp-meter").attr("value", entangleDamage);
+const entangleDamage = 9;
+const entangleUse = 23;
 
-let entangleUse = (attackPoints -= 23);
-$(".ap-text").text(entangleUse + "AP");
-$("#ap-meter").attr("value", entangleUse);
-} //end of entangleBtn
+if (healthPoints >= entangleDamage && attackPoints >= entangleUse) {
+    healthPoints -= entangleDamage;
+    attackPoints -= entangleUse;
+} else {
+    if (healthPoints < entangleDamage) {
+    healthPoints = 0;
+    $(".freaky-fungus").removeClass("walk").addClass("dead");
+    }
+    if (attackPoints < entangleUse) {
+    attackPoints = 0;
+    $(".attack-btn").prop("disabled", attackPoints === 0);
+    }
+}
+
+$(".hp-text").text(healthPoints + "HP");
+$("#hp-meter").attr("value", healthPoints);
+
+$(".ap-text").text(attackPoints + "AP");
+$("#ap-meter").attr("value", attackPoints);
+}
+
+// let entangleDamage = (healthPoints -= 9);
+// $(".hp-text").text(entangleDamage + "HP");
+// $("#hp-meter").attr("value", entangleDamage);
+
+// let entangleUse = (attackPoints -= 23);
+// $(".ap-text").text(entangleUse + "AP");
+// $("#ap-meter").attr("value", entangleUse);
+// } //end of entangleBtn
 
 function dragonBladeBtn() {
 console.log("user used DRAGON BLADE!");
 
-let dragonDamage = (healthPoints -= 9);
-$(".hp-text").text(dragonDamage + "HP");
-$("#hp-meter").attr("value", dragonDamage);
+const dragonDamage = 47;
+const dragonBladeUse = 38;
 
-let dragonBladeUse = (attackPoints -= 23);
-$(".ap-text").text(dragonBladeUse + "AP");
-$("#ap-meter").attr("value", dragonBladeUse);
-} //end of dragonBladeBtn
+if (healthPoints >= dragonDamage && attackPoints >= dragonBladeUse) {
+    healthPoints -= dragonDamage;
+    attackPoints -= dragonBladeUse;
+} else {
+    if (healthPoints < dragonDamage) {
+    healthPoints = 0;
+    $(".freaky-fungus").removeClass("walk").addClass("dead");
+    }
+    if (attackPoints < dragonBladeUse) {
+    attackPoints = 0;
+    $(".attack-btn").prop("disabled", attackPoints === 0);
+    }
+}
+
+$(".hp-text").text(healthPoints + "HP");
+$("#hp-meter").attr("value", healthPoints);
+
+$(".ap-text").text(attackPoints + "AP");
+$("#ap-meter").attr("value", attackPoints);
+}
+
+// let dragonDamage = (healthPoints -= 9);
+// $(".hp-text").text(dragonDamage + "HP");
+// $("#hp-meter").attr("value", dragonDamage);
+
+// let dragonBladeUse = (attackPoints -= 23);
+// $(".ap-text").text(dragonBladeUse + "AP");
+// $("#ap-meter").attr("value", dragonBladeUse);
+// } //end of dragonBladeBtn
 
 function starFireBtn() {
 console.log("user used STAR FIRE!");
 
-let starDamage = (healthPoints -= 9);
-$(".hp-text").text(starDamage + "HP");
-$("#hp-meter").attr("value", starDamage);
+const starDamage = 25;
+const starFireUse = 33;
 
-let starFireUse = (attackPoints -= 23);
-$(".ap-text").text(starFireUse + "AP");
-$("#ap-meter").attr("value", starFireUse);
-} //end of starFireBtn
+if (healthPoints >= starDamage && attackPoints >= starFireUse) {
+    healthPoints -= starDamage;
+    attackPoints -= starFireUse;
+} else {
+    if (healthPoints < starDamage) {
+    healthPoints = 0;
+    $(".freaky-fungus").removeClass("walk").addClass("dead");
+    }
+    if (attackPoints < starFireUse) {
+    attackPoints = 0;
+    $(".attack-btn").prop("disabled", attackPoints === 0);
+    }
+}
 
-// function health(){
-//     if (healthPoints <= 1){
-//         healthPoints = 0;
-//     }
-// };
+$(".hp-text").text(healthPoints + "HP");
+$("#hp-meter").attr("value", healthPoints);
 
-// function energy(){
-//     if (attackPoints <= 1){
-//     attackPoints = 0;
-// }
-// }
+$(".ap-text").text(attackPoints + "AP");
+$("#ap-meter").attr("value", attackPoints);
+}
+// let starDamage = (healthPoints -= 9);
+// $(".hp-text").text(starDamage + "HP");
+// $("#hp-meter").attr("value", starDamage);
 
-// health();
-
-
-
-// Assign Global Variables
-
-// HP=100
-
-// AP=100
-
-// When you click an attack button:
-
-// Make Buttons Attached to Attacks
-
-// Need to Set up Listener for all 4 attacks
-
-// Make sure buttons dont have event default ??? event.preventDefault();
-
-// Button handlers
-
-// Functions should be the same except for their values (AP And HP)
-
-// Figure out what each button does
-
-// Data for writing functions below:
-
-// Arcane Scepter
-
-// - **AP Cost:** 12
-
-// - **HP Damage:** 14
-
-// Both of these values change when the button is run
-
-// Entangle
-
-// - **AP Cost:** 23
-
-// - **HP Damage:** 9
-
-// Both of these values change when the button is run
-
-// Dragon Blade
-
-// - **AP Cost:** 38
-
-// - **HP Damage:** 47
-
-// Both of these values change when the button is run
-
-// Star Fire
-
-// - **AP Cost:** 33
-
-// - **HP Damage:** 25
-
-// Both of these values change when the button is run
-
-// update _state_ variable(s) to make the Freaky Fungus
-
-// lose hit points (HP),
-
-// and to reduce your attack points (AP).
-
-// - AP and HP values of each attack
-
-// - State may be held in one our more variables of your choosing: Easier to keep them seperate
-
-// - HP and AP values may not be negative (set to zero, if they would otherwise be negative)
-
-//If statement outside of the other functions
-
-// If (HP <= 0 || AP <= 0){
-
-// Set value to 0
-
-// make fungus dance
-
-// }
-
-// Make it so that AP and HP are not "Hard Coded" into the DOM
-
-// **Render state changes to the DOM**
-
-// - Update the text above the attack buttons (eg, "100 AP")
-
-// - Update the text above the enemy fungus (eg, "100 HP")
-
-// - If the Freaky Fungus runs out of HP, the monster is dead and you win! Replace the `walk` class with a `dead` class on the freaky-fungus element, to make them fall over and die.
-
-// - If you run out of AP, the monster wins and humanity is doomed 😢 Replace the `walk` class with a `jump` class on the freaky-fungus element, to make them jump for the glory of the fungal race.
-
-// - You may no longer attack, if AP is `0`. Give all of the attack buttons a [`disabled`](https://www.w3schools.com/tags/att_button_disabled.asp) attribute, so they may no longer be used.
+// let starFireUse = (attackPoints -= 23);
+// $(".ap-text").text(starFireUse + "AP");
+// $("#ap-meter").attr("value", starFireUse);
+// } //end of starFireBtn}}}
